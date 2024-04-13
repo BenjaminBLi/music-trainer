@@ -24,7 +24,6 @@ export default function App() {
 
     async function stopRecording() {
         console.log('Stopping recording..');
-        setRecording(undefined);
         await recording.stopAndUnloadAsync();
         await Audio.setAudioModeAsync(
             {
@@ -32,6 +31,7 @@ export default function App() {
             }
         );
         const uri = recording?.getURI();
+        setRecording(undefined);
         console.log('Recording stopped and stored at', uri);
     }
 
